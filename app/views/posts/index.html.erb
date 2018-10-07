@@ -11,6 +11,15 @@
   <% end %>
 </div>
 
+<%= form_tag("/posts", method: "get") do %>
+  <%= select_tag "author", options_from_collection_for_select(Author.all, "id", "name"), include_blank: true %>
+ 
+  <!-- new code -->
+  <%= select_tag "date", options_for_select(["Today", "Old News"]), include_blank: true %>
+  <%= submit_tag "Filter" %>
+<% end %>
+
+
 
 <% @posts.each do |post| %>
   <div>
